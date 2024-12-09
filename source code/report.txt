@@ -1,0 +1,22 @@
+###1 
+TIME 4:46  NOV 22
+1 > In index and Registration php file add the posgres connection
+2 > In index ,Registration,desk1 php file add the Session and in desk1 using user_id retrive the data from database;
+
+###2 
+TIME 10:30 NOV 23
+1 > remove the session and another error
+2 > In addSnippet add session and retrive the data of snippet like snippet name, Snippet Language,Snippet code
+
+###3
+TIME 10:00 NOV 26
+1 > make the snippet desk Dynamic
+2 > create function that check snippet Language and if it is html then convert < to &lt, > to &gt and if the code consist <br> :- &lt br &gt <br>
+3 > if the code lang is Not equal to html then the another function for changing the brackets '<>'
+4 > add sepcial effects like html,css,js,... text decoration,text highlighting
+
+
+###4
+TIME 11:00 NOV 27
+1 > desktop/desk1 is completed -- (REMANING :- adding java script);
+2 > 
