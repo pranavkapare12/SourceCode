@@ -35,10 +35,10 @@ $a=$_SESSION["user_id"];
             <a href="/desk2/desk2.php">
                 <div class="nav-button"><i class="fas box bx bx-code-alt"></i><span>CODE</span></div>
             </a>
-            <a href="">
+            <a href=".././../Chatdesk/desk1.php">
                 <div class="nav-button"><i class="fas box bx bx-message-dots"></i><span>Chats</span></div>
             </a>
-            <a href="">
+            <a href="../../addSnippet/desk2.php">
                 <div class="nav-button"><i class="fas box bx bx-message-square-add"></i><span>ADD</span></div>
             </a>
         </div>

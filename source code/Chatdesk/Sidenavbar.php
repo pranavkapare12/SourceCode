@@ -1,6 +1,6 @@
 <?php
 // session_start();
-// $a=$_SESSION["user_id"];
+$a=$_SESSION["user_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,7 @@
         href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S&family=Rubik+Wet+Paint&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Tiny5&display=swap"
         rel="stylesheet">
     <!--Google Fonts 0001-->
-    <script src=".././../jquery.js"></script>
+    <script src="../jquery.js"></script>
 </head>
 
 <body>
@@ -51,35 +51,95 @@
     <!-- -------------------- SIDE SCREEN CONTENT ------------------------- -->
     <!-- Google Fonts no 0001 -->
     <div class="sidescreen space-mono-bold">
-        <div class="users" id="followers">
-            <div class="header">
-                <label>Users</label><br>
-                <input type="search" placeholder="Search">
-            </div>
-            <hr>
-            <div class="contener">
-            <label> Pranav Kapare </label>
-            </div>            
+        <div class="users" id="users">
+
         </div>
-        <div class="users_chat" id="following">
-            <div class="contenertop">
-                PranavKapare
-            </div>
-            <div class="contenercenter">
-                <div class="conmessage">
-                    <label>hello</label>
-                </div>
-                <div class="conmessageright">
-                    <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, blanditiis consectetur? Blanditiis ullam odit nisi natus deserunt aspernatur unde provident?</label>
-                </div>
-            </div>
-            <div class="contenerbottom">
-                <input type="text" placeholder="Message"><button style="min-width: 3rem; border-radius:2rem;"><i class='bx bx-send' style="font-size: 1.5rem;"></i></button>
-            </div>
+        <div class="users_chat" id="user_chat">
+
         </div>
     </div>
 </body>
 <script>
+$(document).ready(function() {
+    var userid = "<?php echo "$a"; ?>";
+    $.ajax({
+        type: "POST",
+        url: "Users.php",
+        data: {
+            userid
+        },
+        success: function(Data) {
+            $("#users").html(Data);
+            $(".contener").click(function() {
+                messagedesk($(this).attr("uid"));
+            })
+        }
+    });
+
+    function messagedesk(reciver_id) {
+        $.ajax({
+            type: "POST",
+            url: "messagedesk.php",
+            data: {
+                userid,
+                reciver_id
+            },
+            success: function(data) {
+                $("#user_chat").html(data);
+                $("button").click(function() {
+                    message_send(userid, reciver_id);
+                    message_refresh(userid, reciver_id);
+                });
+                settime(userid,reciver_id);
+            }
+        })
+    }
+
+    function message_send(userid, reciver_id) {
+        var message = $("#input").val();
+        if (message === null || message.trim() === "") {
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "sendmessage.php",
+            data: {
+                userid,
+                reciver_id,
+                message
+            },
+            success: function(data) {
+                $("#input").val("");
+            }
+        })
+    }
+
+
+
+    function message_refresh(userid, reciver_id) {
+        $.ajax({
+            type: "POST",
+            url: "message_ref.php",
+            data: {
+                userid,
+                reciver_id
+            },
+            success: function(data) {
+                $(".contenercenter").html("");
+                $(".contenercenter").html(data);
+            }
+        })
+    }
+
+    function settime(userid, reciver_id){
+        setTimeout(() => {
+            console.log("Hello");
+            message_refresh(userid,reciver_id);
+            settime(userid,reciver_id);
+        }, 5000);
+    }
+
+})
 </script>
 
 </html>

@@ -16,7 +16,7 @@
         session_start();
         $a=$_SESSION["user_id"];
         if( $a < 1){
-                header("Location: ../desk1.php");
+                header("Location: ../index.php");
              }
             include('Sidenavbar.php');
          ?>

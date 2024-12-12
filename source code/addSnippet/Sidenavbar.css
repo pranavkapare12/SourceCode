@@ -489,4 +489,9 @@ select{
   font-family: "Space Mono", serif;
   font-style: normal;
 }
-
+option {
+  background-color: #1B1E23;
+  font-size: medium;
+  font-family: "Space Mono", serif;
+  font-style: normal;
+}

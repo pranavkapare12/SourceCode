@@ -1,0 +1,16 @@
+<div class="contenertop">
+                PranavKapare
+            </div>
+            <div class="contenercenter">
+                <div class="conmessage">
+                    <label>hello</label>
+                </div>
+                <div class="conmessageright">
+                    <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, blanditiis consectetur?
+                        Blanditiis ullam odit nisi natus deserunt aspernatur unde provident?</label>
+                </div>
+            </div>
+            <div class="contenerbottom">
+                <input type="text" placeholder="Message"><button style="min-width: 3rem; border-radius:2rem;"><i
+                        class='bx bx-send' style="font-size: 1.5rem;"></i></button>
+            </div>
