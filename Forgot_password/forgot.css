@@ -1,0 +1,91 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.desk{
+    background-color: #424BC2;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+.form{
+    min-width: 30vw;
+    min-height: 70vh;
+    background-color: rgb(0, 0, 0 , 0.5);
+    color: white;
+    /* opacity: 0.5; */
+    border-radius: 1rem;
+    padding: 1rem;
+
+    display:grid;
+    grid-template-rows: 20vh 40vh; 
+}
+.form .header label{
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.form .header{
+    margin: 0.4rem;
+    /* max-height: 10vh; */
+}
+
+.itim-regular {
+    font-family:'Courier New', Courier, monospace;
+  }
+
+.content{
+    display: grid;
+}
+
+#phoneno{
+    grid-template-columns: 100%;    
+}
+
+.content div{
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    justify-content: center;
+}
+.content div input,button{
+    min-height: 3rem;
+    outline: none;
+    border: none;
+    color: white;
+}
+
+.content div input{
+    border-radius: 0.5rem;
+    padding-left: 0.3rem;
+    background-color: rgb(217, 217, 217 , 0.3);
+    font-size: large;
+}
+
+.content div input::placeholder{
+    font-family:'Courier New', Courier, monospace;
+    color: white;
+    font-size: medium;
+}
+
+.content div button{
+    font-family:'Courier New', Courier, monospace;
+    border-radius: 2rem;
+    margin-left: 0.4rem;
+    background-color: rgb(217, 217, 217 , 0.3);
+    color: white;
+}
+
+#submit{
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+#Showpassone,#Showpasstwo{
+    font-size: larger;
+}

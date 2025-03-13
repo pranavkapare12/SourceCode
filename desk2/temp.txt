@@ -1,0 +1,58 @@
+<div class="sidescreen space-mono-bold">
+        <!-- Google Fonts no 0001 -->
+        <div class="leftcontent">
+            <h3>21 JAN 2024</h3>
+            <hr class="biohr">
+            <div class="codescreen">
+                <div class="codetitle">
+                    <!-- <label style="background-color:gray;border-radius:.5rem; padding-left: 0.4rem ; padding-right:0.4rem ;"> JAVA </label> -->
+                    <label style="padding-left: 2.4rem;">Pranav Kapare</label>
+                </div><hr style="color:aliceblue;">
+                <pre><code class="language-java java">
+                    import java.io.*;
+                    import java.lang.*;
+                    import java.util.*;
+                    public class Q2 {
+                        public static void main(String [] args) throws Exception{
+                            String name="";
+                            Scanner sc=new Scanner(System.in);
+                            System.out.println("Enter File name ::");
+                            name=sc.next();
+                            File fp=new File(name);
+                            if(fp.isFile()){
+                                System.out.println("File path :: "+ fp.getPath());
+                                System.out.println("File Length :: "+fp.length());
+                                System.out.println("Can Readable :: "+fp.canRead());
+                                System.out.println("Can Write able :: "+fp.canWrite());
+                                System.out.println("ABSOLUTE PATH :: "+fp.getAbsolutePath());
+                            }
+                            else{
+                                String list[]=fp.list();
+                                int i,fcount=0,dcount=0;
+                                for(i=0;i < list.length;i++){
+                                    File fp2=new File(fp+"/"+list[i]);
+                                    if(fp2.isFile()){
+                                        fcount++;
+                                    }
+                                    else if(fp2.isDirectory()){
+                                        dcount++;
+                                    }
+                                }
+                                System.out.println("Total no of Files :: "+fcount);
+                                System.out.println("Total no of Directory :: "+dcount);
+                            }
+                        }
+                        
+                    }
+                </code></pre>
+                <hr style="color:aliceblue;">
+                <div class="codedescr">
+                    SNIPPET TITLE :: FILE HANDLING<br>
+                    LANGUAGE :: JAVA<br>
+                    CREATE DATE :: 21 JAN 2024
+                    MODIFY DATE :: 24 JAN 2024
+                    DESCRIPTION :: Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi labore officiis aspernatur veritatis. Autem cum quaerat dolorum corrupti nam natus.<br>
+                </div>
+            </div>
+        </div>
+    </div>
