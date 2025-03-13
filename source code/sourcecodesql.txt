@@ -1,0 +1,74 @@
+------------- USERS TABLE -------------------
+sourcecode=# create table users(user_id SERIAL primary key,uname varchar(20),email varchar(30),password varchar(10),profile_picture bit,Bio text,rdate date,lastlogin date,status varchar(1),phoneno varchar(12),country varchar(2),lang_pref varchar(10),DOB date,Gender varchar(1),fork_count int);
+CREATE TABLE
+
+sourcecode=# ALTER SEQUENCE users_user_id_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+-------------Follower Table------------------
+sourcecode=# create table follower_table(sr SERIAL primary key,user_id int references users(user_id),follower_id int references users(user_id),FAD date,unique(user_id,follower_id));
+CREATE TABLE
+
+sourcecode=# ALTER SEQUENCE follower_table_sr_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+---------------FOLLOWING TABLE---------------
+sourcecode=# create table following_table(sr SERIAL primary key,user_id int references users(user_id),following_id int references users(user_id),FAD date,unique(user_id,following_id));
+CREATE TABLE
+
+sourcecode=# ALTER SEQUENCE following_table_sr_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+---------------GROUP TABLE-------------------
+sourcecode=# create table groups(group_id SERIAL primary key,group_name varchar(15),createby int references users(user_id),created_at date);
+CREATE TABLE
+sourcecode=# ALTER SEQUENCE groups_group_id_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+---------------GROUP MEMEBER TABLE-----------
+sourcecode=# create table GroupMember(sr SERIAL primary key,group_id int references groups(group_id),user_id int references users(user_id),DOJ date);
+CREATE TABLE
+sourcecode=# ALTER SEQUENCE GroupMember_sr_seq RESTART WITH 1;
+ALTER SEQUENCE
+sourcecode=# 
+---------------------------------------------
+---------------GROUP MEMBER TABLE------------
+sourcecode=# create table GroupMessage(GM_id SERIAL primary key,group_id int references groups(group_id),user_id int references users(user_id),TS date);
+CREATE TABLE
+sourcecode=# ALTER SEQUENCE GroupMessage_GM_id_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+---------------MESSAGE TABLE-----------------
+sourcecode=# create table Message(sr_no SERIAL primary key,sender_id int references users(user_id),reciver_id int references users(user_id),content text,TS date);
+CREATE TABLE
+sourcecode=# ALTER SEQUENCE Message_sr_no_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+---------------Snippet table-----------------
+sourcecode=# create table Snippet(sid SERIAL primary key,user_id int references users(user_id),Stitle varchar(20),SContent text,Lang varchar(9),created_at date,modify_at date,visibility varchar(1),Description text,Tags text,likes_count int,comment_count int,isfoked boolean,original_snippet_id int,code_result text,collaborators_cnt int);
+CREATE TABLE
+sourcecode=# ALTER SEQUENCE Snippet_sid_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+---------------Comment Table-----------------
+sourcecode=# create table comment(cid SERIAL primary key,sid int references Snippet(sid),user_id int references users(user_id),content text,TS date);
+CREATE TABLE
+sourcecode=# ALTER SEQUENCE comment_cid_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+---------------Comment replay table----------
+sourcecode=# create table comment_rep(rid SERIAL primary key,cid int references comment(cid),content text);
+CREATE TABLE
+sourcecode=# ALTER SEQUENCE comment_rep_rid_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
+---------------Like--------------------------
+sourcecode=# create table likes(sid int references snippet(sid),user_id int references users(user_id));
+CREATE TABLE
+---------------------------------------------
+---------------Fork table--------------------
+sourcecode=# create table fork(fork_id SERIAL primary key,Osid int references Snippet(sid),Fsid int references Snippet(sid),fdate date);
+CREATE TABLE
+sourcecode=# ALTER SEQUENCE fork_fork_id_seq RESTART WITH 1;
+ALTER SEQUENCE
+---------------------------------------------
