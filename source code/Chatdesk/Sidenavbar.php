@@ -89,8 +89,10 @@ $(document).ready(function() {
                 $("button").click(function() {
                     message_send(userid, reciver_id);
                     message_refresh(userid, reciver_id);
+                    // setInterval(() => {
+                    //     message_refresh(userid, reciver_id);
+                    // }, 2000); // Poll every 2 seconds
                 });
-                settime(userid,reciver_id);
             }
         })
     }
@@ -131,13 +133,6 @@ $(document).ready(function() {
         })
     }
 
-    function settime(userid, reciver_id){
-        setTimeout(() => {
-            console.log("Hello");
-            message_refresh(userid,reciver_id);
-            settime(userid,reciver_id);
-        }, 5000);
-    }
 
 })
 </script>

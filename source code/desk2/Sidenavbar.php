@@ -1,6 +1,6 @@
 <?php
 $connect=pg_connect("host=localhost user=postgres dbname=sourcecode password=Pranav@123") or die("Cannot connect");
-$query="select users.uname,stitle,scontent,lang,created_at,modify_at,description from users,snippet where users.user_id=snippet.user_id order by snippet.created_at DESC;";
+$query="select users.uname,stitle,scontent,lang,created_at,modify_at,description,snippet.sid from users,snippet where users.user_id=snippet.user_id order by snippet.created_at DESC;";
 $result=pg_query($connect,$query);
 ?>
 
@@ -9,7 +9,7 @@ $result=pg_query($connect,$query);
 
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - Navbar Pure CSS</title> 
+    <title>CodePen - Navbar Pure CSS</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,17 +52,30 @@ $result=pg_query($connect,$query);
     <div class="sidescreen space-mono-bold">
         <!-- Google Fonts no 0001 -->
         <div class="leftcontent">
+            <!-- <div class="butt">
+                <button>Home</button>
+                <button>Recent</button>
+                <button>Friends</button>
+                <button>Images</button>
+                <button>Files</button>
+                <button>Recent Modify</button>
+            </div> -->
             <h3><?php echo date("d/m/Y") ?></h3>
             <hr class="biohr">
             <?php 
             while(($row=pg_fetch_row($result)) != NULL){
                 $code="<pre><code class='language-$row[3] $row[3]'> $row[2] </code></pre><hr style='color:aliceblue;'>";
-                $code_title="<div class='codetitle'><label style='padding-left: 2.4rem;'>$row[0]</label></div><hr style='color:aliceblue;'>";
-                $code_desc="<div class='codedescr'>
+                $code_title="<div class='codetitle'><label style='padding-left: 2.4rem;'>$row[1]</label></div><hr style='color:aliceblue;'>";
+                $code_desc="
+                <div class='action'>
+                    <div class='like' value='$row[7]'><i class='bx bx-like'></i></div>
+                    <div class='commen' value='$row[7]'><i class='bx bx-comment'></i></div>
+                </div>
+                        <div class='codedescr'>
                         SNIPPET TITLE :: $row[1]<br>
                         LANGUAGE :: $row[3]<br>
                         CREATE DATE :: $row[4]<br>
-                        MODIFY DATE :: $row[5]<br>
+                        LAST MODIFY :: $row[5]<br>
                         DESCRIPTION :: $row[6]<br>
                     </div>";
                 $code_screen="<div class='codescreen container'>$code_title $code $code_desc</div><br>";
@@ -70,14 +83,70 @@ $result=pg_query($connect,$query);
             }
             ?>
         </div>
+        <div class="rightcontent">
+            <div class="header">
+                <div class="header"><label>Add To Numbers</label></div>
+            </div>
+            <div class="content">
+                <div class="message">
+                    <label class="User">Data Not Found</label><br>
+                </div>
+            </div>
+            <div class="send">
+                <input type="text" name="Message" placeholder="Comment.." id="Message"><button id="Send"><i class='bx bxs-send' ></i></button>
+            </div>
+        </div>
     </div>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
-
+<script>hljs.highlightAll();</script>
+<script src="./../jquery.js"></script>
 <script>
-hljs.highlightAll();
+    $(document).ready(function(){
+        $('.like').click(function(){
+            var id= $(this).attr('value');
+            console.log(id);
+        })
+        $('.commen').click(function(){
+            var id=$(this).attr('value');
+            $.ajax({
+                url:"./Comment/comment.php",
+                type:"POST",
+                data:{
+                    id,
+                },
+                success : function(data){
+                    $(".rightcontent").html("");
+                    $(".rightcontent").html(data);
+                    $('#Send').click(function(){
+                        // console.log("Executed");
+                        refresh(id);
+                    });
+                }   
+            })
+        })
+    });
+    function refresh(id){
+        var message=$('#Message').val();
+        $('#Message').val("");
+        if(message === ""){
+            return;
+        }
+        $.ajax({
+            url:"./Comment/refreshmessage.php",
+            type:"POST",
+            data:{
+                id,
+                message,
+            },
+            success: function(data){
+                console.log(data);
+                $(".content").html("");
+                $(".content").html(data);
+            }
+        })
+    }
 </script>
-
 </html>

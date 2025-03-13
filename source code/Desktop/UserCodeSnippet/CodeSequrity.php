@@ -1,6 +1,3 @@
-<?php
- session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,20 +7,23 @@
     <title>Dashbord</title>
 </head>
 <style>
-
 </style>
 
 <body>
     <div>
         <?php
+        session_start();
          $a=$_SESSION["user_id"];
-         if( $a < 4){
-            header("Location: ../index.php");
-         }
+         //  print_r($a);
+          if( $a < 4){
+             header("Location: ../desk1.php");
+          }
         include('Sidenavbar.php');
         ?>
-        
     </div>
+    <!-- <div>
+        
+    </div> -->
 </body>
 
 </html>

@@ -92,8 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             <div class="leftcontent space-mono-bold">
                 <h1>Create Snippet</h1>
-                <input type="text" placeholder="Snippet Title" name="Snippet_Title"><br><br>
-                <select name="Snippet_Language">
+                <input type="text" placeholder="Snippet Title" name="Snippet_Title" required><br><br>
+                <select name="Snippet_Language" required>
                     <option value="1c">1C</option>
                     <option value="abnf">ABNF</option>
                     <option value="actionscript">ActionScript</option>
@@ -267,9 +267,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <option value="xquery">XQuery</option>
                     <option value="zephir">Zephir</option>
                 </select><br><br>
-                <input type="text" placeholder="Snippet Description" name="Snippet_Description"><br><br>
-                <input type="text" placeholder="Snippet Tags" name="Snippet_Tags"><br><br>
-                <textarea rows="18" cols="40" placeholder="Snippet Code" name="Snippet_Code"></textarea><br><br>
+                <input type="text" placeholder="Snippet Description" name="Snippet_Description" required><br><br>
+                <input type="text" placeholder="Snippet Tags" name="Snippet_Tags" required><br><br>
+                <textarea rows="18" cols="40" placeholder="Snippet Code" name="Snippet_Code" required></textarea><br><br>
                 <button type="submit">Submit</button>
 
             </div>

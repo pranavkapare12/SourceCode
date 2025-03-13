@@ -8,14 +8,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     
     function toquery($email,$password,$connection)
     {
-        $query = "select * from users where email='$email' and password='$password';";
+        // $query = "select * from users where email='$email' and password='$password';";
+        $query ="select user_id,uname,password from users where email='$email' and password='$password';";
         $a=pg_query($connection,$query);
         if($a){
-            $row = pg_fetch_assoc($a);
-            extract($row);       
-            if(count($row) > 0){
-                $_SESSION['user_id']=$user_id;
-                $_SESSION['uname']=$uname;
+            $row = pg_fetch_array($a);
+            if($row){
+                $_SESSION['user_id']=$row[0];
+                $_SESSION['uname']=$row[1];
                 header("Location: ./Desktop/desk1.php");
             }
         }
@@ -73,7 +73,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 .stl {
     height: 100vh;
     width: 100vw;
-    background-color: #393e46;
+    background-color: #000;
     display: grid;
     grid-template-columns: repeat(33, 1fr);
     grid-template-rows: repeat(30, 1fr);
@@ -103,10 +103,12 @@ form {
     position: absolute;
     top: 19vh;
     margin-left: 35%;
-    height: 60vh;
+    min-height: 60vh;
     width: 30vw;
     color: #fff;
     backdrop-filter: blur(10px);
+    display: grid;
+    grid-template-rows: 60% 40%;
 
 }
 
@@ -114,7 +116,7 @@ form {
     /* background-color: #fff; */
     position: relative;
     width: 90%;
-    top: 10vh;
+    padding-top: 10%;
 }
 
 .Section {
@@ -165,7 +167,7 @@ input {
 input::placeholder {
     color: #fff;
     font-family: "Poppins", sans-serif;
-    font-weight: 800;
+    font-weight: 585;
     font-style: normal;
 }
 
@@ -190,24 +192,7 @@ i {
     font-family: "Poppins", sans-serif;
 }
 
-@media (max-width:600px) {
-    form {
-        margin-left: 25%;
-        min-height: 60vh;
-        min-width: 40%;
-    }
 
-    .Section {
-        font-weight: 800;
-        font-size: medium;
-    }
-
-    input {
-        height: 2vh;
-        width: 20vh;
-        padding-left: 0.5vw;
-    }
-}
 </style>
 
 <body>
@@ -217,20 +202,17 @@ i {
             <div class="Section">
                 Login
             </div>
-            <l class='bx bxl-html5'></l>
-            <l class='bx bxl-css3'></l>
-            <l class='bx bxl-javascript'></l>
-            <l class='bx bxl-php'></l>
             <div class="login">
                 <div class="inputbox inputbox1">
-                    <input type="email" name="email" placeholder="Enter email"><i class='bx bxs-user'></i><br><br>
+                    <input type="email" name="email" placeholder="Enter email" required><i class='bx bxs-user'></i><br><br>
                 </div>
                 <div class="inputbox inputbox2">
-                    <input type="password" name="password" placeholder="Enter Password"><i class='bx bx-lock'></i>
+                    <input type="password" name="password" placeholder="Enter Password" required><i class='bx bx-lock'></i>
                 </div>
                 <button type="submit" class="btn">Login</button>
                 <div class="regis">
-                    Don't have any account?<a href="Registration.php">Register</a>
+                    Don't have any account?<a href="Registration.php">Register</a><br>
+                    <a href="./Forgot_password/forgot.php">Forgot password</a>
                 </div>
             </div>
         </form>

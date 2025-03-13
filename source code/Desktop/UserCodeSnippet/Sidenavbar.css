@@ -1,0 +1,462 @@
+:root {
+  --background: #393e46;
+  --navbar-width: 256px;
+  --navbar-width-min: 80px;
+  --navbar-dark-primary: #222831;
+  --navbar-dark-secondary: #2c3e50;
+  --navbar-light-primary: #f5f6fa;
+  --navbar-light-secondary: #ffffff;
+  --sidescreen-height: 96%;
+  --sidescreen-width: 95%;
+  --sidescreen-backcolor: #222831;
+}
+*::-webkit-scrollbar{
+  width: 0px;
+}
+body {
+  margin: 0;
+  background: var(--background);
+  height: 0vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 2%;
+}
+/* ---------------------------------Middle Screen Content---------------------------------------- */
+.sidescreen {
+  position:absolute;
+  min-height: 91%;
+  min-width: var(--sidescreen-width);
+  background: var(--sidescreen-backcolor);
+  border-radius: 0.5rem;
+  padding-left: 0.5rem;
+  padding-top: 0.3rem;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  font-size: large;
+  color: white;
+  /* padding: 0.2rem; */
+  margin: 1.5rem;
+}
+
+/* font decoration */
+.space-mono-bold {
+  font-family: "Space Mono", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* --------------------------------- 2 Childs of Side Screen ---------------------------------------- */
+.codes ,.dash{
+  position: sticky;
+  top: 1rem;
+  background-color: #1B1E23;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.codes {
+  min-width:16vw;
+  margin: 0.5rem;
+}
+
+.dash{
+  min-width:75vw;
+  margin: 0.5rem;
+}
+
+/* ------------------------------------------------------------------------------------------------------ */
+
+/* ----------------- 2 Child inside Codes --------------------*/
+
+/* ---------------- Search Snippet ---------------- */
+
+.codes .searchsnippet{
+  top: 1rem;
+  position: sticky;
+}
+.codes .snippet{
+  /* position: fixed; */
+  height: 60vh;
+  top: 9rem;
+  overflow: scroll;
+}
+
+.codes .searchsnippet input{
+  width: 95%;  
+  min-height: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  
+  color: #ffffff;
+  font-size: large;
+  font-weight: 600;
+  background-color: #393E46;
+  border: none;
+  outline: none;
+  border-radius: 0.8rem;
+}
+
+.codes .searchsnippet input::placeholder{
+   font-family: "Space Mono", serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #ffffff;
+}
+
+.codes .snippet .content{
+  background-color: #393e46;
+  width: 90%;
+  min-height: 3.3rem;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+}
+
+.codes .snippet .content label{
+font-size: 0.8rem;
+padding-left: 0.3rem;
+}
+.codes .snippet .content .li{
+  font-size: 0.7rem;
+  padding-left: 0.3rem;
+  }
+/* ------------------------------------------------ */
+/* ---------------- dash (Two child)---------------- */
+.dash{
+  display:grid;
+  grid-template-columns:70% 30%;
+}
+/* ----------dash-snippet---------- */
+.dash-snippet{
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  display: grid;
+  grid-template-rows: auto auto auto;
+}
+/* -------snippet-header-------- */
+.snippet-header{
+  background-color: #2E333A;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  min-height: 3rem;
+}
+/* Snippet left */
+.dash .dash-snippet .snippet-header .snippet-left{
+  
+}
+/*--------------*/
+/* Snippet right */
+.dash .dash-snippet .snippet-header .snippet-right{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: auto auto auto;
+  
+}
+.dash .dash-snippet .snippet-header .snippet-right .first{
+  background-color: red;
+}
+.dash .dash-snippet .snippet-header .snippet-right .second{
+  background-color: rgb(251, 255, 0);
+}
+.dash .dash-snippet .snippet-header .snippet-right .third{
+  background-color: rgb(0, 26, 255);
+}
+.dash .dash-snippet .snippet-header .snippet-right .first,.second,.third{
+  min-height: 1rem;
+  min-width: 1rem;
+  margin-left: 0.4rem;
+  border-radius: 1rem;
+}
+
+/*--------------*/
+/* ----------------------------- */
+/* -------snippet-content------- */
+.snippet-content{
+  background-color: #2E333A;
+  padding: 0.1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  overflow: scroll;
+  font-size: large;
+  max-height: 60vh;
+}
+pre{
+  margin: 0;
+  padding: 0;
+}
+code{
+  padding: 0%;
+  margin: 0%;
+  text-align: left;
+}
+
+/* ----------------------------- */
+/* -------snippet-footer-------- */
+.snippet-footer{
+  background-color: #2E333A;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 1rem;
+  display: grid;
+  grid-template-rows: 22% 70%;
+  overflow: scroll;
+
+}
+/* -------action------------- */
+.action{
+/* background-color: #00eeff;   */
+margin-bottom: 0.2rem;
+display: grid;
+grid-template-columns: auto auto;
+}
+/* Child of action */
+.likecomment{
+  /* background-color: #0800ff; */
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+}
+.likes ,.comment{
+  position: sticky;
+  min-width: 3vw;
+  min-height: 1vh;
+  top: 1%;
+  background-color: #1B1E23;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  margin: 0.3rem;
+  border-radius: 2rem;
+}
+i{
+  /* height: 100%;
+  width: 100%; */
+}
+/* ---------------- */
+/* -------------------------- */
+/* -------snippet-info------------- */
+.snippet-info{
+  /* background-color: #0800ff; */
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+}
+.size{
+  font-size: medium;
+  /* background-color: #1B1E23; */
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
+  position: relative;
+  height: fit-content;
+}
+
+.snippet_tdl{
+  font-size: medium;
+}
+.tags{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  min-height: fit-content;
+}
+
+.tags label{
+  border-radius: 1rem;
+  font-size: small;
+  padding-left: 1rem;
+  opacity: 1;
+  min-width: fit-content;
+}
+.likes_comment{
+  font-size: small;
+}
+.date{
+  display: grid;
+  text-align: right;
+}
+
+.date label{
+  /* background-color: #1B1E23; */
+  font-size: 0.7rem;
+  margin: 0.1rem;
+  /* opacity: 0.5; */
+  color: #ffffff;
+  /* background-color: #393e46; */
+}
+
+
+/* -------------------------- */
+/* ----------------------------- */
+/* -------------------------------- */
+
+
+
+
+/* --------snippet-comment--------- */
+.comm-design{
+  background-color: #222831;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
+.snippet-comment{
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  margin-bottom: 0.5rem;
+  /* background-color: #00f2ff; */
+  max-height: 80vh;
+  position: relative;
+}
+
+.snippet-comment .header{
+  min-height: 8%;
+  display:grid;
+  grid-template-columns: auto;
+  align-items: center;
+}
+/*  */
+
+.snippet-comment .content{
+ min-height: 84%;
+ padding-top: 0.5rem;
+ position: relative;
+}
+.snippet-comment .content .commsend{
+  text-align: right;
+  min-height: fit-content;
+  margin: 0.2rem;
+}
+
+.snippet-comment .content .commrecive{
+  min-height: fit-content;
+  margin: 0.2rem;
+  padding: 0.1rem;
+}
+
+.commcon{
+  background-color: #1D102B;
+  display: inline-block;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  border-radius: 0.5rem;
+}
+.commcon label{
+  font-size: small;
+  color: #9000ff;
+}
+
+.commcon .cont{
+  font-size: small;
+  
+}
+.commcon .time{
+  font-size: 0.7rem;
+}
+
+
+/*  */
+.snippet-comment .send{
+ min-height: 8%; 
+ display: grid;
+ grid-template-columns: 80% 20%;
+}
+
+.snippet-comment .send input,button{
+  margin: 0.4rem;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  background-color: #1B1E23;
+  color: #ffffff;
+}
+
+.snippet-comment .send input{
+  padding-left: 1rem;
+}
+
+.snippet-comment .send input::placeholder{
+  color:#ffffff;
+}
+
+/* -------------------------------- */
+/* ----------------------------------------- */
+/* -----------------------------------------------------------*/
+/* Snippet Highlighting */
+.hljs {
+  background-color: rgba(0, 0, 0, 0);
+  
+  /* Dark grayish background */
+  color: #ffd92f; /* Light gray text */
+  overflow: scroll;
+  padding: 0%;
+}
+
+.hljs-comment {
+  color: #b2c2c8; 
+  font-style: italic;
+}
+
+.hljs-keyword {
+  color: #ffffffe0; 
+  font-weight: bold;
+}
+
+.hljs-string {
+  color: #00e5ff; 
+}
+
+.hljs-number {
+  color: #9000ff; 
+}
+
+/* Function parameters name */
+.hljs-function {
+  /* color: #00ff0d;  */
+  color:white;
+}
+
+.hljs-title{
+  color:#1eff00;
+}
+
+.hljs-operator{
+  color: #ff0000;
+}
+
+.hljs-attr{
+  color: blue;
+}
+/* for Data types */
+.hljs-type{
+  color:#00f2ff;
+}
+
+/* apply on parameters name */
+.hljs-name{
+  color:#ff0000;
+
+}
+/* -------------------- */
+

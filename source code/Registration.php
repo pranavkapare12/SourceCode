@@ -29,8 +29,8 @@
 .stl {
     height: 100vh;
     width: 100vw;
-    background-color: #393e46;
-    background-size: cover;
+    background-color: #000;
+    /* background-size: cover; */
     display: grid;
     grid-template-columns: repeat(33, 1fr);
     grid-template-rows: repeat(30, 1fr);
@@ -38,8 +38,8 @@
 }
 
 span {
-    height: 30px;
-    width: 30px;
+    min-height: 30px;
+    min-width: 30px;
     margin: 0.5rem;
     background-color: #222831;
     color: white;
@@ -60,11 +60,12 @@ form {
     position: absolute;
     top: 19vh;
     margin-left: 35%;
-    height: 60vh;
+    min-height: 60vh;
     width: 30vw;
     color: #fff;
     backdrop-filter: blur(10px);
-    
+    display: grid;
+    grid-template-rows: 50% 50%;
 }
 
 .login {
@@ -75,7 +76,7 @@ form {
 
 .Section {
     font-family: "Poppins", sans-serif;
-    font-weight: 800;
+    font-weight: 600;
     font-style: normal;
     font-size: xx-large;
 }
@@ -95,22 +96,22 @@ a {
     margin-top: 20px;
 }
 
-.inputbox1{
+.inputbox1 {
     padding-top: 10%;
 }
 
-.inputbox2{
+.inputbox2 {
     padding-bottom: 3vh;
 }
 
-input{
+input {
     height: 80%;
     width: 100%;
-    background:transparent;
-    border:none;
-    outline:none;
-    border:2px solid #fff;
-    border-radius:1rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid #fff;
+    border-radius: 1rem;
     padding-left: 1vw;
     font-family: "Poppins", sans-serif;
     font-weight: 600;
@@ -118,47 +119,48 @@ input{
     color: #fff;
 }
 
-input::placeholder{
+input::placeholder {
     color: #fff;
     font-family: "Poppins", sans-serif;
     font-weight: 800;
     font-style: normal;
 }
-i{
+
+i {
     position: relative;
     top: -75%;
     left: 24.5vw;
     font-size: x-large;
 }
 
-.btn{
+.btn {
     margin-left: 0.8vw;
-    width:100%;
-    height:5vh;
-    border:none;
+    width: 100%;
+    height: 5vh;
+    border: none;
     border-radius: 1rem;
     margin-bottom: 2vh;
     font-family: "Poppins", sans-serif;
     font-weight: 800;
 }
-.regis{
+
+.regis {
     text-align: center;
     font-family: "Poppins", sans-serif;
 }
 </style>
 
 <body>
-    <div class="stl">
-        <form method='POST'>
+<form method='POST'>
             <div class="Section">
-             Register
+                Register
             </div>
             <div class="login">
                 <div class="inputbox inputbox1">
                     <input type="text" name="name" placeholder="Enter Name">
                 </div>
                 <div class="inputbox ">
-                <input type="tel" name="phone"  placeholder="Enter PhoneNumber">
+                    <input type="tel" name="phone" placeholder="Enter PhoneNumber">
                 </div>
                 <div class="inputbox">
                     <input type="email" name="email" placeholder="Enter email">
@@ -169,7 +171,11 @@ i{
                 <button type="submit" class="btn">New Account</button>
             </div>
         </form>
-        <?php
+    <div class="stl">
+        
+    </div>
+</body>
+<?php
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -197,15 +203,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     
 }
 ?>
-
-    </div>
-</body>
 <script>
 let grids = document.querySelectorAll('.stl');
 
 function addElements() {
     let b = document.getElementsByClassName("stl")[0];
-    for (let i = 0; i < 650; i++) {
+    for (let i = 0; i < 660; i++) {
         let a = document.createElement("span");
         a.className = "";
         b.append(a);
@@ -235,4 +238,5 @@ function addRandomInterval() {
 addElements();
 addRandomInterval();
 </script>
+
 </html>

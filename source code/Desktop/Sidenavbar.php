@@ -1,6 +1,6 @@
 <?php
     include('../Codeformating.php');
-    $connect=posgres();
+    $connect=pg_connect("host=localhost dbname=sourcecode user=postgres password=Pranav@123");
     $sessionid=$_SESSION['user_id'];
     $query="select users.uname,(select count(*) as following from following_table,users where following_table.user_id=users.user_id and following_table.following_id=$sessionid),(select count(*) as follower from follower_table,users where follower_table.user_id=users.user_id and follower_table.follower_id=$sessionid),(select count(*) as Snippet from snippet where snippet.user_id=users.user_id) from users where users.user_id=$sessionid;";
     $query1="select snippet.stitle,snippet.lang,snippet.description from snippet where snippet.user_id=$sessionid;";
@@ -34,9 +34,7 @@
             <hr />
         </div>
         <div id="nav-content">
-            <a href="/Desktop/desk1.php">
                 <div class="nav-button"><i type="solid" class="fas box bx bx-user"></i><span>Account</span></div>
-            </a>
             <a href="/desk2/desk2.php">
                 <div class="nav-button"><i class="fas box bx bx-code-alt"></i><span>CODE</span></div>
             </a>
@@ -67,13 +65,14 @@
                 <hr>
                 <br>
                 <a href="./FFdesk/desk1.php">
-
                     <label class="Bio fw">Follower :: <?php echo $ffcount[2];?>
                         <!--ADD TOTAL FOLLOWERS-->
                     </label><br><br>
                     <label class="Bio fw">Following :: <?php echo $ffcount[1];?>
                         <!--ADD TOTAL FOLLOWING-->
                     </label><br><br>
+                </a>
+                <a href="./UserCodeSnippet/CodeSequrity.php">
                     <label>Total No Code :: <?php echo $ffcount[3];?>
                         <!--ADD TOTAL FOLLOWING-->
                     </label><br><br>
